@@ -1,24 +1,35 @@
-from math_utils import add, subtract, multiply, divide, power, modulo
-from string_utils import to_uppercase, reverse_string, is_palindrome, count_vowels
-from logger import log_message
+from math_utils import *
+from string_utils import *
+from logger import Logger
+from date_utils import current_datetime, days_between
+from file_utils import write_file, read_file
+from data_utils import flatten_list
 
 if __name__ == "__main__":
-    a, b = 10, 5
-    text = "Madam"
+    logger = Logger()
 
-    # Math operations
-    log_message(f"Add result: {add(a, b)}")
-    log_message(f"Subtract result: {subtract(a, b)}")
-    log_message(f"Multiply result: {multiply(a, b)}")
-    log_message(f"Divide result: {divide(a, b)}")
-    log_message(f"Power result: {power(a, b)}")
-    log_message(f"Modulo result: {modulo(a, b)}")
+    # Math ops
+    logger.info(f"Add: {add(10, 5)}")
+    logger.info(f"Is 7 prime? {is_prime(7)}")
+    logger.info(f"Factorial of 5: {factorial(5)}")
 
-    # String operations
-    log_message(f"Original text: {text}")
-    log_message(f"Uppercase: {to_uppercase(text)}")
-    log_message(f"Reversed: {reverse_string(text)}")
-    log_message(f"Is Palindrome: {is_palindrome(text)}")
-    log_message(f"Vowel Count: {count_vowels(text)}")
+    # String ops
+    text = "Madam, in Eden I'm Adam."
+    logger.info(f"Original: {text}")
+    logger.info(f"No punctuation: {remove_punctuation(text)}")
+    logger.info(f"Is Palindrome: {is_palindrome(text)}")
+    logger.info(f"Consonant Count: {count_consonants(text)}")
 
-    print("All operations complete. Results logged.")
+    # Date ops
+    logger.info(f"Now: {current_datetime()}")
+    logger.info(f"Days between 2025-01-01 and 2025-07-11: {days_between('2025-01-01', '2025-07-11')}")
+
+    # File ops
+    write_file("sample.txt", "This is a test.")
+    content = read_file("sample.txt")
+    logger.info(f"Read from file: {content}")
+
+    # Data ops
+    logger.info(f"Flattened list: {flatten_list([[1,2], [3,4]])}")
+
+    print("All extended operations complete.")
