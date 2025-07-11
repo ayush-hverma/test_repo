@@ -23,3 +23,25 @@ def power(a, b):
 def modulo(a, b):
     """Return the remainder when a is divided by b."""
     return a % b
+def average(numbers):
+    """Return the average of a list of numbers."""
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)
+
+def factorial(n):
+    """Return the factorial of a number."""
+    if n < 0:
+        raise ValueError("Factorial is not defined for negative numbers.")
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+def is_prime(n):
+    """Check if a number is prime."""
+    if n < 2:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
